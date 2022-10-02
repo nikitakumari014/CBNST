@@ -1,33 +1,33 @@
 #include <stdio.h>
 #include <math.h>
 
-float cal(float x, int a, int b, int c, int d)
+double cal(double x, double a, double b, double c, double d)
 {
     return pow(x, 3) * a + pow(x, 2) * b + pow(x, 1) * c + d;
 }
 int main()
 {
-    int a, b, c, d;
-    float z = 0;
-    scanf("%d%d%d%d", &a, &b, &c, &d);
+    double a, b, c, d;
+    double z = 0;
+    printf("Enter the value of a,b,c,d:\n");
+    scanf("%lf%lf%lf%lf", &a, &b, &c, &d);
 
     // printf("reading done");
-    float x = 0, y = 1;
+    double x = 0, y = 1;
     int count = 0, cnt = 0;
     while (count < 3)
     {
-        float fx1 = cal(x, a, b, c, d);
-        float fx2 = cal(y, a, b, c, d);
+        double fx1 = cal(x, a, b, c, d);
+        double fx2 = cal(y, a, b, c, d);
 
-        // printf("fx1 : %.2f, fx2 : %.2f\n",fx1,fx2);
+        
 
         if (fx1 * fx2 < 0)
         {
-            // printf("Inside if");
+            
             z = (x + y) / 2.0;
 
-            float fx3 = cal(z, a, b, c, d);
-            // printf("value of fx3 : %.2f\n",fx3);
+            double fx3 = cal(z, a, b, c, d);
 
             if (fx3 == 0.0)
             {
@@ -50,6 +50,5 @@ int main()
             y++;
         }
     }
-
-    printf("%.2f", z);
+    printf("Answer : %.4lf", z);
 }
