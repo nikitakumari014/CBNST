@@ -11,10 +11,10 @@ int main()
         for(j=1; j<=(n+1); j++)
         {
             printf("A[%d][%d] : ", i,j);
-            scanf("%f",&A[i][j]);
+            scanf("%f",&A[i][j]);01
         }
     }
-    for(j=1; j<=n; j++) /* loop for the generation of upper triangular matrix*/
+    for(j=1; j<=n; j++) 
     {
         for(i=1; i<=n; i++)
         {
@@ -29,7 +29,6 @@ int main()
         }
     }
     x[n]=A[n][n+1]/A[n][n];
-    /* this loop is for backward substitution*/
     for(i=n-1; i>=1; i--)
     {
         sum=0;
@@ -42,7 +41,7 @@ int main()
     printf("\nThe solution is: \n");
     for(i=1; i<=n; i++)
     {
-        printf("\nx%d=%f\t",i,x[i]); /* x1, x2, x3 are the required solutions*/
+        printf("\nx%d=%f\t",i,x[i]);
     }
     return(0);
 }

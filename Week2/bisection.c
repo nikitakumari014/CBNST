@@ -1,54 +1,48 @@
+// C++ program for implementation of Bisection Method for
+// solving equations
 #include <stdio.h>
-#include <math.h>
+#define EPSILON 0.01
 
-double cal(double x, double a, double b, double c, double d)
+// An example function whose solution is determined using
+// Bisection Method. The function is x^3 - x^2 + 2
+double func(double x)
 {
-    return pow(x, 3) * a + pow(x, 2) * b + pow(x, 1) * c + d;
+    return x * x - 30;
 }
+
+// Prints root of func(x) with error of EPSILON
+void bisection(double a, double b)
+{
+    if (func(a) * func(b) >= 0)
+    {
+        printf("You have not assumed right a and b\n");
+        return;
+    }
+
+    double c = a;
+    while ((b - a) >= EPSILON)
+    {
+        // Find middle point
+        c = (a + b) / 2;
+
+        // Check if middle point is root
+        if (func(c) == 0.0)
+            break;
+
+        // Decide the side to repeat the steps
+        else if (func(c) * func(a) < 0)
+            b = c;
+        else
+            a = c;
+    }
+    printf("The value of root is : %lf", c);
+}
+
+// Driver program to test above function
 int main()
 {
-    double a, b, c, d;
-    double z = 0;
-    printf("Enter the value of a,b,c,d:\n");
-    scanf("%lf%lf%lf%lf", &a, &b, &c, &d);
-
-    // printf("reading done");
-    double x = 0, y = 1;
-    int count = 0, cnt = 0;
-    while (count < 3)
-    {
-        double fx1 = cal(x, a, b, c, d);
-        double fx2 = cal(y, a, b, c, d);
-
-        
-
-        if (fx1 * fx2 < 0)
-        {
-            
-            z = (x + y) / 2.0;
-
-            double fx3 = cal(z, a, b, c, d);
-
-            if (fx3 == 0.0)
-            {
-                break;
-            }
-
-            if (fx1 * fx3 < 0)
-            {
-                y = z;
-            }
-            else if (fx3 * fx2 < 0)
-            {
-                x = z;
-            }
-            count++;
-        }
-        else
-        {
-            x = y;
-            y++;
-        }
-    }
-    printf("Answer : %.4lf", z);
+    // Initial values assumed
+    double a = -5, b = 6;
+    bisection(a, b);
+    return 0;
 }

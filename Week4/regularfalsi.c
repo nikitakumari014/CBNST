@@ -10,7 +10,7 @@ void regula(float *x, float x0, float x1, float fx0, float fx1, int *itr)
     ++(*itr);
     printf("Iteration no. %3d X = %7.5f \n", *itr, *x);
 }
-void main()
+int main()
 {
     int itr = 0, maxmitr;
     float x0, x1, x2, x3, allerr;
@@ -31,6 +31,5 @@ void main()
         }
         x2 = x3;
     } while (itr < maxmitr);
-    printf("Solution does not converge or iterations not sufficient:\n");
     return 1;
 }
